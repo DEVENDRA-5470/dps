@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration Form</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <form>
+
+        <h1>Student Registration Form</h1>
+
+        <!-- Student Name -->
+        <label for="name">Student Name</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            required
+        >
+
+        <br><br>
+
+        <!-- Email -->
+        <label for="email">Email Address</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
+
+        <br><br>
+
+        <!-- Phone -->
+        <label for="phone">Phone Number</label>
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+            required
+        >
+
+        <br><br>
+
+        <!-- Date of Birth -->
+        <label for="dob">Date of Birth</label>
+        <input
+            type="date"
+            id="dob"
+            name="dob"
+            required
+        >
+
+        <br><br>
+
+        <!-- Gender -->
+        <label>Gender</label>
+
+        <br><br>
+
+        <input
+            type="radio"
+            id="male"
+            name="gender"
+            value="Male"
+            required
+        >
+        <label for="male">Male</label>
+
+        <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="Female"
+        >
+        <label for="female">Female</label>
+
+        <input
+            type="radio"
+            id="other"
+            name="gender"
+            value="Other"
+        >
+        <label for="other">Other</label>
+
+        <br><br>
+
+        <!-- Course -->
+        <label for="course">Select Course</label>
+
+        <select id="course" name="course" required>
+
+            <option value="">-- Select Course --</option>
+
+            <option value="BCA">BCA</option>
+
+            <option value="BSc">
+                B.Sc Computer Science
+            </option>
+
+            <option value="BTech">
+                B.Tech
+            </option>
+
+            <option value="MCA">
+                MCA
+            </option>
+
+            <option value="MTech">
+                M.Tech
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <!-- Address -->
+        <label for="address">Address</label>
+
+        <textarea
+            id="address"
+            name="address"
+            rows="4"
+            placeholder="Enter your complete address"
+            required
+        ></textarea>
+
+        <br><br>
+
+        <!-- City -->
+        <label for="city">City</label>
+
+        <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Enter your city"
+            required
+        >
+
+        <br><br>
+
+        <!-- State -->
+        <label for="state">State</label>
+
+        <input
+            type="text"
+            id="state"
+            name="state"
+            placeholder="Enter your state"
+            required
+        >
+
+        <br><br>
+
+        <!-- Pincode -->
+        <label for="pincode">Pincode</label>
+
+        <input
+            type="text"
+            id="pincode"
+            name="pincode"
+            placeholder="Enter your pincode"
+            maxlength="6"
+            required
+        >
+
+        <br><br>
+
+        <!-- Password -->
+        <label for="password">Password</label>
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create your password"
+            required
+        >
+
+        <br><br>
+
+        <!-- Confirm Password -->
+        <label for="confirmPassword">Confirm Password</label>
+
+        <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            required
+        >
+
+        <br><br>
+
+        <!-- Terms and Conditions -->
+        <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+        >
+
+        <label for="terms">
+            I agree to the terms and conditions
+        </label>
+
+        <br><br>
+
+        <!-- Buttons -->
+        <button type="submit">
+            Register
+        </button>
+
+        <button type="reset">
+            Reset
+        </button>
+
+    </form>
+
+</body>
+
+</html>
