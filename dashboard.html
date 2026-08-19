@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #070b14;
+            --card: rgba(17, 24, 39, 0.78);
+            --card-hover: rgba(25, 35, 55, 0.95);
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.14);
+            --primary: #00e5a0;
+            --primary-dark: #00b982;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --orange: #f97316;
+            --danger: #ef4444;
+        }
+
+        body.light {
+            --bg: #f1f5f9;
+            --card: rgba(255, 255, 255, 0.88);
+            --card-hover: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: rgba(15, 23, 42, 0.1);
+        }
+
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(0, 229, 160, 0.12), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 28%),
+                radial-gradient(circle at 50% 100%, rgba(139, 92, 246, 0.10), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: 0.3s ease;
+        }
+
+        /* Top navigation */
+        .navbar {
+            width: 100%;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            border-bottom: 1px solid var(--border);
+            background: rgba(7, 11, 20, 0.7);
+            backdrop-filter: blur(18px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        body.light .navbar {
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--primary), #00aaff);
+            color: #00130d;
+            box-shadow: 0 0 25px rgba(0, 229, 160, 0.3);
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.25s;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 1250px;
+            margin: auto;
+            padding: 65px 24px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            border: 1px solid rgba(0, 229, 160, 0.25);
+            border-radius: 100px;
+            background: rgba(0, 229, 160, 0.08);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            50% {
+                opacity: 0.35;
+                transform: scale(0.7);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 18px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* Stats */
+        .stats {
+            max-width: 1250px;
+            padding: 10px 24px 25px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            right: -35px;
+            top: -35px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.08;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        /* Controls */
+        .controls {
+            max-width: 1250px;
+            margin: 15px auto 25px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 50px;
+            padding: 0 18px 0 48px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            outline: none;
+            background: var(--card);
+            color: var(--text);
+            font-size: 15px;
+            backdrop-filter: blur(15px);
+            transition: 0.25s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 229, 160, 0.08);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 17px;
+            top: 14px;
+            color: var(--muted);
+        }
+
+        .sort-btn {
+            height: 50px;
+            padding: 0 20px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--card);
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .sort-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Student grid */
+        .container {
+            max-width: 1250px;
+            margin: auto;
+            padding: 0 24px 70px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0 18px;
+        }
+
+        .section-heading h2 {
+            font-size: 22px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .student-card {
+            position: relative;
+            min-height: 220px;
+            padding: 22px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            backdrop-filter: blur(18px);
+            overflow: hidden;
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+            animation: appear 0.5s ease both;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .student-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(0, 229, 160, 0.45);
+            background: var(--card-hover);
+            box-shadow:
+                0 20px 45px rgba(0, 0, 0, 0.25),
+                0 0 30px rgba(0, 229, 160, 0.07);
+        }
+
+        .card-glow {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            right: -70px;
+            top: -70px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.07;
+            transition: 0.4s;
+        }
+
+        .student-card:hover .card-glow {
+            transform: scale(1.8);
+            opacity: 0.12;
+        }
+
+        .avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 19px;
+            font-weight: 800;
+            margin-bottom: 17px;
+            background: linear-gradient(135deg, #00d084, #008cff);
+            box-shadow: 0 8px 22px rgba(0, 229, 160, 0.18);
+        }
+
+        .student-card:nth-child(3n) .avatar {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+        }
+
+        .student-card:nth-child(4n) .avatar {
+            background: linear-gradient(135deg, #f97316, #ef4444);
+        }
+
+        .student-name {
+            font-size: 20px;
+            font-weight: 750;
+            margin-bottom: 7px;
+        }
+
+        .folder {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .open-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 11px 13px;
+            border-radius: 11px;
+            border: 1px solid rgba(0, 229, 160, 0.2);
+            background: rgba(0, 229, 160, 0.07);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .open-btn:hover {
+            background: var(--primary);
+            color: #00130d;
+        }
+
+        .status {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .status i {
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Empty state */
+        .empty {
+            display: none;
+            text-align: center;
+            padding: 70px 20px;
+            color: var(--muted);
+        }
+
+        .empty-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .empty h3 {
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1050px) {
+            .student-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 780px) {
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .student-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .navbar {
+                padding: 0 18px;
+            }
+
+            .brand-text {
+                display: none;
+            }
+
+            .hero,
+            .container,
+            .stats,
+            .controls {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .student-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="brand-logo">✦</div>
+            <div class="brand-text">
+                Student<span>Hub</span>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeBtn" title="Change theme">☀</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span class="live-dot"></span>
+                STUDENT PORTAL
+            </div>
+
+            <h1>
+                Explore the<br>
+                <span class="gradient-text">Student Dashboard.</span>
+            </h1>
+
+            <p>
+                A central place to access every student's frontend project,
+                portfolio and dashboard. Select a student below to continue.
+            </p>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+
+        <div class="stat">
+            <div class="stat-label">TOTAL STUDENTS</div>
+            <div class="stat-value" id="totalStudents">12</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">ACTIVE PROJECTS</div>
+            <div class="stat-value" id="activeProjects">12</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">SEARCH RESULTS</div>
+            <div class="stat-value" id="resultCount">12</div>
+        </div>
+
+    </section>
+
+    <!-- SEARCH -->
+    <div class="controls">
+
+        <div class="search-box">
+            <span class="search-icon">⌕</span>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search student name..."
+                autocomplete="off"
+            >
+        </div>
+
+        <button class="sort-btn" id="sortBtn">
+            ↕ Sort A-Z
+        </button>
+
+    </div>
+
+    <!-- STUDENTS -->
+    <main class="container">
+
+        <div class="section-heading">
+            <div>
+                <h2>All Students</h2>
+                <p>Click a card to open the student's project.</p>
+            </div>
+        </div>
+
+        <div class="student-grid" id="studentGrid">
+
+            <!-- Abhishek -->
+            <div class="student-card" data-name="Abhishek">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">A</div>
+                <div class="student-name">Abhishek</div>
+                <div class="folder">📁 students / Abhishek</div>
+                <a class="open-btn" href="students/Abhishek/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Aman -->
+            <div class="student-card" data-name="aman">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">A</div>
+                <div class="student-name">aman</div>
+                <div class="folder">📁 students / aman</div>
+                <a class="open-btn" href="students/aman/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Arvind -->
+            <div class="student-card" data-name="Arvind">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">A</div>
+                <div class="student-name">Arvind</div>
+                <div class="folder">📁 students / Arvind</div>
+                <a class="open-btn" href="students/Arvind/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Chetan -->
+            <div class="student-card" data-name="chetan">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">C</div>
+                <div class="student-name">chetan</div>
+                <div class="folder">📁 students / chetan</div>
+                <a class="open-btn" href="students/chetan/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Divay -->
+            <div class="student-card" data-name="divay">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">D</div>
+                <div class="student-name">divay</div>
+                <div class="folder">📁 students / divay</div>
+                <a class="open-btn" href="students/divay/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Manas -->
+            <div class="student-card" data-name="manas">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">M</div>
+                <div class="student-name">manas</div>
+                <div class="folder">📁 students / manas</div>
+                <a class="open-btn" href="students/manas/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Manish -->
+            <div class="student-card" data-name="manish">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">M</div>
+                <div class="student-name">manish</div>
+                <div class="folder">📁 students / manish</div>
+                <a class="open-btn" href="students/manish/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Nitesh -->
+            <div class="student-card" data-name="nitesh">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">N</div>
+                <div class="student-name">nitesh</div>
+                <div class="folder">📁 students / nitesh</div>
+                <a class="open-btn" href="students/nitesh/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Propti -->
+            <div class="student-card" data-name="propti">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">P</div>
+                <div class="student-name">propti</div>
+                <div class="folder">📁 students / propti</div>
+                <a class="open-btn" href="students/propti/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- THAKUR -->
+            <div class="student-card" data-name="THAKUR">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">T</div>
+                <div class="student-name">THAKUR</div>
+                <div class="folder">📁 students / THAKUR</div>
+                <a class="open-btn" href="students/THAKUR/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Vish -->
+            <div class="student-card" data-name="vish">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">V</div>
+                <div class="student-name">vish</div>
+                <div class="folder">📁 students / vish</div>
+                <a class="open-btn" href="students/vish/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+            <!-- Aadirao -->
+            <div class="student-card" data-name="Aadirao">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">A</div>
+                <div class="student-name">Aadirao</div>
+                <div class="folder">📁 students / Aadirao / frontend</div>
+                <a class="open-btn" href="students/Aadirao/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+                 <!-- Aadirao -->
+            <div class="student-card" data-name="Aadirao">
+                <div class="card-glow"></div>
+                <div class="status"><i></i> Active</div>
+                <div class="avatar">A</div>
+                <div class="student-name">kartik</div>
+                <div class="folder">📁 students / kartik / frontend</div>
+                <a class="open-btn" href="students/kartik/frontend/index.html">
+                    Open Project <span>→</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="empty" id="emptyState">
+            <div class="empty-icon">🔎</div>
+            <h3>No student found</h3>
+            <p>Try searching with a different name.</p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        Built with <strong>HTML + CSS + JavaScript</strong> · Student Portal
+    </footer>
+
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const studentGrid = document.getElementById("studentGrid");
+        const cards = Array.from(document.querySelectorAll(".student-card"));
+        const resultCount = document.getElementById("resultCount");
+        const totalStudents = document.getElementById("totalStudents");
+        const activeProjects = document.getElementById("activeProjects");
+        const emptyState = document.getElementById("emptyState");
+        const sortBtn = document.getElementById("sortBtn");
+        const themeBtn = document.getElementById("themeBtn");
+
+        totalStudents.textContent = cards.length;
+        activeProjects.textContent = cards.length;
+        resultCount.textContent = cards.length;
+
+
+        /* SEARCH */
+        searchInput.addEventListener("input", function () {
+
+            const query = this.value.toLowerCase().trim();
+            let visible = 0;
+
+            cards.forEach(card => {
+
+                const name = card.dataset.name.toLowerCase();
+
+                if (name.includes(query)) {
+                    card.style.display = "block";
+                    visible++;
+                } else {
+                    card.style.display = "none";
+                }
+
+            });
+
+            resultCount.textContent = visible;
+
+            if (visible === 0) {
+                emptyState.style.display = "block";
+            } else {
+                emptyState.style.display = "none";
+            }
+        });
+
+
+        /* SORT A-Z */
+        let ascending = true;
+
+        sortBtn.addEventListener("click", function () {
+
+            const sortedCards = [...cards].sort((a, b) => {
+
+                const nameA = a.dataset.name.toLowerCase();
+                const nameB = b.dataset.name.toLowerCase();
+
+                return ascending
+                    ? nameA.localeCompare(nameB)
+                    : nameB.localeCompare(nameA);
+            });
+
+            sortedCards.forEach(card => studentGrid.appendChild(card));
+
+            ascending = !ascending;
+
+            sortBtn.innerHTML = ascending
+                ? "↕ Sort A-Z"
+                : "↕ Sort Z-A";
+        });
+
+
+        /* DARK / LIGHT MODE */
+        themeBtn.addEventListener("click", function () {
+
+            document.body.classList.toggle("light");
+
+            if (document.body.classList.contains("light")) {
+                themeBtn.textContent = "🌙";
+            } else {
+                themeBtn.textContent = "☀";
+            }
+        });
+
+
+        /* CARD MOUSE EFFECT */
+        cards.forEach(card => {
+
+            card.addEventListener("mousemove", function (e) {
+
+                const rect = card.getBoundingClientRect();
+
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const rotateX = ((y / rect.height) - 0.5) * -4;
+                const rotateY = ((x / rect.width) - 0.5) * 4;
+
+                card.style.transform =
+                    `translateY(-7px) perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener("mouseleave", function () {
+                card.style.transform = "";
+            });
+        });
+
+
+        /* KEYBOARD SHORTCUT: / = SEARCH */
+        document.addEventListener("keydown", function (e) {
+
+            if (e.key === "/" && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+
+            if (e.key === "Escape") {
+                searchInput.value = "";
+                searchInput.dispatchEvent(new Event("input"));
+                searchInput.blur();
+            }
+        });
+    </script>
+
+</body>
+</html>
