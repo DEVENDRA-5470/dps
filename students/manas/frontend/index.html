@@ -3,93 +3,815 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Management System</title>
 
-    <link rel="stylesheet" href="index.css">
+    <title>OpsFlow - DevOps Dashboard</title>
+
+    <!-- IMPORTANT: CSS is in the same folder -->
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="container">
-            <h1>Student Management System</h1>
-            <p>Manage your students easily</p>
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">⌁</div>
+
+            <div>
+                <h2>OpsFlow</h2>
+                <span>DEVOPS COMMAND CENTER</span>
+            </div>
         </div>
-    </header>
 
-    <main class="container">
 
-        <section class="card">
-            <h2>Add Student</h2>
+        <div class="workspace">
+            <div class="online-dot"></div>
 
-            <form>
-                <div class="form-group">
-                    <label for="name">Student Name</label>
+            <div>
+                <small>WORKSPACE</small>
+                <strong>Production</strong>
+            </div>
+
+            <span class="arrow">⌄</span>
+        </div>
+
+
+        <nav>
+
+            <p class="section-title">OVERVIEW</p>
+
+            <a href="#" class="menu active">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="#" class="menu">
+                <span>⑂</span>
+                Pipelines
+                <b>8</b>
+            </a>
+
+            <a href="#" class="menu">
+                <span>◈</span>
+                Deployments
+            </a>
+
+            <a href="#" class="menu">
+                <span>◉</span>
+                Infrastructure
+            </a>
+
+
+            <p class="section-title">ENGINEERING</p>
+
+            <a href="#" class="menu">
+                <span>⌘</span>
+                Repositories
+            </a>
+
+            <a href="#" class="menu">
+                <span>▣</span>
+                Artifacts
+            </a>
+
+            <a href="#" class="menu">
+                <span>⚠</span>
+                Incidents
+                <b class="red">2</b>
+            </a>
+
+
+            <p class="section-title">SYSTEM</p>
+
+            <a href="#" class="menu">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="pro-box">
+
+                <div class="rocket">🚀</div>
+
+                <strong>Pro Workspace</strong>
+
+                <p>
+                    Advanced deployment insights
+                </p>
+
+                <button>
+                    View plan
+                </button>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="avatar">
+                    MK
+                </div>
+
+                <div>
+                    <strong>Manas</strong>
+                    <small>DevOps Engineer</small>
+                </div>
+
+                <span>•••</span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div>
+
+                <div class="breadcrumb">
+                    Workspace
+                    <span>/</span>
+                    <strong>Overview</strong>
+                </div>
+
+                <h1>
+                    Good afternoon, Manas
+                    <span>👋</span>
+                </h1>
+
+                <p>
+                    Here's what's happening across your infrastructure today.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <div class="search">
+
+                    <span>⌕</span>
+
                     <input
                         type="text"
-                        id="name"
-                        placeholder="Enter student name"
+                        placeholder="Search resources..."
                     >
+
+                    <kbd>Ctrl K</kbd>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter email"
-                    >
+
+                <button class="small-btn">
+                    ◔
+                </button>
+
+                <button class="small-btn notification">
+                    ♧
+                    <i></i>
+                </button>
+
+                <div class="avatar">
+                    MK
                 </div>
 
-                <div class="form-group">
-                    <label for="course">Course</label>
-                    <input
-                        type="text"
-                        id="course"
-                        placeholder="Enter course"
-                    >
+            </div>
+
+        </header>
+
+
+
+        <!-- SYSTEM STATUS -->
+
+        <div class="system-status">
+
+            <div>
+
+                <span class="green-dot"></span>
+
+                <strong>
+                    All systems operational
+                </strong>
+
+                <span class="checked">
+                    • Last checked 30 seconds ago
+                </span>
+
+            </div>
+
+            <button>
+                ↻ Refresh
+            </button>
+
+        </div>
+
+
+
+        <!-- STAT CARDS -->
+
+        <section class="stats">
+
+
+            <div class="card">
+
+                <div class="card-title">
+                    DEPLOYMENTS
+
+                    <span class="purple-icon">
+                        ↗
+                    </span>
                 </div>
 
-                <button type="submit">Add Student</button>
-            </form>
+                <h2>284</h2>
+
+                <p>
+                    <span class="up">
+                        ↑ 18.4%
+                    </span>
+
+                    vs last month
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-title">
+                    BUILD SUCCESS RATE
+
+                    <span class="green-icon">
+                        ✓
+                    </span>
+                </div>
+
+                <h2>98.7%</h2>
+
+                <p>
+                    <span class="up">
+                        ↑ 2.1%
+                    </span>
+
+                    vs last month
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-title">
+                    AVG. BUILD TIME
+
+                    <span class="blue-icon">
+                        ◷
+                    </span>
+                </div>
+
+                <h2>4m 32s</h2>
+
+                <p>
+                    <span class="up">
+                        ↓ 12.8%
+                    </span>
+
+                    faster than before
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-title">
+                    ACTIVE SERVERS
+
+                    <span class="orange-icon">
+                        ◆
+                    </span>
+                </div>
+
+                <h2>
+                    42
+                    <small>/ 45</small>
+                </h2>
+
+                <p>
+                    <span class="up">
+                        93.3%
+                    </span>
+
+                    healthy
+                </p>
+
+            </div>
+
         </section>
 
-        <section class="card">
-            <h2>Students List</h2>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Course</th>
-                    </tr>
-                </thead>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Manas</td>
-                        <td>manas@example.com</td>
-                        <td>DevOps</td>
-                    </tr>
+        <!-- TWO COLUMN AREA -->
 
-                    <tr>
-                        <td>2</td>
-                        <td>Rahul</td>
-                        <td>rahul@example.com</td>
-                        <td>AWS</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="two-columns">
+
+
+            <!-- PIPELINE CHART -->
+
+            <div class="panel chart-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Pipeline Performance</h2>
+
+                        <p>
+                            Build and deployment activity
+                        </p>
+                    </div>
+
+                    <select>
+                        <option>Last 7 days</option>
+                        <option>Last 30 days</option>
+                    </select>
+
+                </div>
+
+
+                <div class="chart">
+
+                    <div class="numbers">
+                        <span>100</span>
+                        <span>75</span>
+                        <span>50</span>
+                        <span>25</span>
+                        <span>0</span>
+                    </div>
+
+
+                    <div class="graph">
+
+                        <div class="line"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                        <div class="line line4"></div>
+
+
+                        <div class="bars">
+
+                            <div class="bar-group">
+                                <i style="height:55%"></i>
+                                <em style="height:20%"></em>
+                                <label>Mon</label>
+                            </div>
+
+                            <div class="bar-group">
+                                <i style="height:75%"></i>
+                                <em style="height:27%"></em>
+                                <label>Tue</label>
+                            </div>
+
+                            <div class="bar-group">
+                                <i style="height:63%"></i>
+                                <em style="height:22%"></em>
+                                <label>Wed</label>
+                            </div>
+
+                            <div class="bar-group">
+                                <i style="height:88%"></i>
+                                <em style="height:35%"></em>
+                                <label>Thu</label>
+                            </div>
+
+                            <div class="bar-group">
+                                <i style="height:73%"></i>
+                                <em style="height:30%"></em>
+                                <label>Fri</label>
+                            </div>
+
+                            <div class="bar-group">
+                                <i style="height:58%"></i>
+                                <em style="height:24%"></em>
+                                <label>Sat</label>
+                            </div>
+
+                            <div class="bar-group">
+                                <i style="height:95%"></i>
+                                <em style="height:42%"></em>
+                                <label>Sun</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="legend">
+
+                    <span>
+                        <i class="legend-build"></i>
+                        Builds
+                    </span>
+
+                    <span>
+                        <i class="legend-deploy"></i>
+                        Deployments
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RECENT ACTIVITY -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Recent Activity</h2>
+
+                        <p>
+                            Latest engineering events
+                        </p>
+                    </div>
+
+                    <button class="dots">
+                        •••
+                    </button>
+
+                </div>
+
+
+                <div class="activity">
+
+
+                    <div class="activity-row">
+
+                        <div class="activity-icon success">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>
+                                Production deployed
+                            </strong>
+
+                            <p>
+                                api-service
+                                <b>v2.8.4</b>
+                            </p>
+
+                            <small>
+                                2 minutes ago
+                            </small>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity-row">
+
+                        <div class="activity-icon purple">
+                            ⑂
+                        </div>
+
+                        <div>
+                            <strong>
+                                Pipeline completed
+                            </strong>
+
+                            <p>
+                                frontend-build #2841
+                            </p>
+
+                            <small>
+                                18 minutes ago
+                            </small>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity-row">
+
+                        <div class="activity-icon blue">
+                            ⌘
+                        </div>
+
+                        <div>
+                            <strong>
+                                New commit pushed
+                            </strong>
+
+                            <p>
+                                feat: improve auth flow
+                            </p>
+
+                            <small>
+                                42 minutes ago
+                            </small>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity-row">
+
+                        <div class="activity-icon warning">
+                            !
+                        </div>
+
+                        <div>
+                            <strong>
+                                Build failed
+                            </strong>
+
+                            <p>
+                                payment-service #938
+                            </p>
+
+                            <small>
+                                1 hour ago
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
+
+
+
+        <!-- BOTTOM SECTION -->
+
+        <section class="two-columns bottom">
+
+
+            <!-- PIPELINES -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Active Pipelines</h2>
+
+                        <p>
+                            Current CI/CD pipeline status
+                        </p>
+                    </div>
+
+                    <button class="view">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="pipeline">
+
+
+                    <div class="pipeline-row">
+
+                        <div class="repo">
+
+                            <div class="repo-icon">
+                                ◈
+                            </div>
+
+                            <div>
+                                <strong>
+                                    api-service
+                                </strong>
+
+                                <small>
+                                    main • #2841
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress">
+                            <span style="width:82%"></span>
+                        </div>
+
+                        <span class="running">
+                            ● Running
+                        </span>
+
+                        <small>
+                            2m 14s
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="pipeline-row">
+
+                        <div class="repo">
+
+                            <div class="repo-icon">
+                                ◇
+                            </div>
+
+                            <div>
+                                <strong>
+                                    frontend-web
+                                </strong>
+
+                                <small>
+                                    main • #1928
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress">
+                            <span style="width:100%"></span>
+                        </div>
+
+                        <span class="completed">
+                            ● Completed
+                        </span>
+
+                        <small>
+                            3m 48s
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="pipeline-row">
+
+                        <div class="repo">
+
+                            <div class="repo-icon">
+                                ⬡
+                            </div>
+
+                            <div>
+                                <strong>
+                                    payment-service
+                                </strong>
+
+                                <small>
+                                    develop • #938
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress failed-progress">
+                            <span style="width:43%"></span>
+                        </div>
+
+                        <span class="failed">
+                            ● Failed
+                        </span>
+
+                        <small>
+                            1m 22s
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INFRASTRUCTURE -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Infrastructure</h2>
+
+                        <p>
+                            Environment health
+                        </p>
+                    </div>
+
+                    <button class="view">
+                        Details →
+                    </button>
+
+                </div>
+
+
+                <div class="environment">
+
+
+                    <div class="environment-row">
+
+                        <div class="environment-icon production">
+                            P
+                        </div>
+
+                        <div>
+                            <strong>Production</strong>
+                            <small>24 servers</small>
+                        </div>
+
+                        <span class="healthy">
+                            ● Healthy
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="environment-row">
+
+                        <div class="environment-icon staging">
+                            S
+                        </div>
+
+                        <div>
+                            <strong>Staging</strong>
+                            <small>12 servers</small>
+                        </div>
+
+                        <span class="healthy">
+                            ● Healthy
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="environment-row">
+
+                        <div class="environment-icon development">
+                            D
+                        </div>
+
+                        <div>
+                            <strong>Development</strong>
+                            <small>9 servers</small>
+                        </div>
+
+                        <span class="warning-text">
+                            ● Warning
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <footer>
+            <span>OpsFlow DevOps Command Center</span>
+            <span>© 2026 • Infrastructure monitored 24/7</span>
+        </footer>
 
     </main>
 
-    <footer>
-        <p>© 2026 Student Management System</p>
-    </footer>
+</div>
 
 </body>
 </html>
