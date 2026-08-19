@@ -1,1 +1,95 @@
-<h1>manas1</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Student Management System</h1>
+            <p>Manage your students easily</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>Add Student</h2>
+
+            <form>
+                <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter student name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <input
+                        type="text"
+                        id="course"
+                        placeholder="Enter course"
+                    >
+                </div>
+
+                <button type="submit">Add Student</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Students List</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Manas</td>
+                        <td>manas@example.com</td>
+                        <td>DevOps</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Rahul</td>
+                        <td>rahul@example.com</td>
+                        <td>AWS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Student Management System</p>
+    </footer>
+
+</body>
+</html>
