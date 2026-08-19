@@ -1,3 +1,257 @@
-h1{
-    color: red
+/* ------------------------------
+   General Reset
+------------------------------ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e3a8a,
+            #2563eb
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* ------------------------------
+   Main Container
+------------------------------ */
+
+.container {
+    width: 100%;
+    max-width: 650px;
+}
+
+
+/* ------------------------------
+   Form Card
+------------------------------ */
+
+.form-card {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ------------------------------
+   Header
+------------------------------ */
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h1 {
+    color: #0f172a;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+
+/* ------------------------------
+   Form Groups
+------------------------------ */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #1e293b;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+
+/* ------------------------------
+   Inputs
+------------------------------ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.25s;
+}
+
+
+/* Input focus */
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* Textarea */
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ------------------------------
+   Radio Buttons
+------------------------------ */
+
+.radio-group {
+    display: flex;
+    gap: 25px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-weight: normal;
+
+    margin-bottom: 0;
+}
+
+.radio-group input {
+    accent-color: #2563eb;
+}
+
+
+/* ------------------------------
+   Checkbox
+------------------------------ */
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 22px;
+
+    font-size: 13px;
+
+    color: #475569;
+}
+
+.checkbox-group input {
+    accent-color: #2563eb;
+}
+
+
+/* ------------------------------
+   Submit Button
+------------------------------ */
+
+button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+/* Button Hover */
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+
+/* ------------------------------
+   Mobile Responsive
+------------------------------ */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .form-card {
+        padding: 25px 20px;
+    }
+
+    .form-header h1 {
+        font-size: 25px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
