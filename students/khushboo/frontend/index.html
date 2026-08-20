@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DPS Student Dashboard</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-circle">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <h2>DPS</h2>
+                <p>Student Portal</p>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a href="#" class="menu-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Attendance</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Homework</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-calendar-week"></i>
+                <span>Timetable</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Results</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Study Material</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>Notices</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>Fees</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-bus"></i>
+                <span>Transport</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+        </nav>
+
+        <div class="logout">
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <header class="top-header">
+
+            <div class="header-title">
+                <h1>Student Dashboard</h1>
+                <p>Delhi Public School</p>
+            </div>
+
+            <div class="header-right">
+
+                <div class="notification">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>3</span>
+                </div>
+
+                <div class="student-profile">
+                    <div class="student-avatar">
+                        KS
+                    </div>
+
+                    <div>
+                        <h4>Khushboo Satyarthi</h4>
+                        <p>Class 10 - A</p>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME SECTION ================= -->
+
+        <section class="welcome-section">
+
+            <div class="welcome-text">
+
+                <p class="date">Wednesday, 19 August 2026</p>
+
+                <h2>
+                    Good Afternoon,
+                    <span>Khushboo! 👋</span>
+                </h2>
+
+                <p>
+                    Here's what's happening with your studies today.
+                </p>
+
+            </div>
+
+            <div class="student-info">
+
+                <div>
+                    <small>CLASS</small>
+                    <strong>10 - A</strong>
+                </div>
+
+                <div>
+                    <small>ROLL NO.</small>
+                    <strong>21</strong>
+                </div>
+
+                <div>
+                    <small>SESSION</small>
+                    <strong>2026-27</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DASHBOARD CARDS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card attendance-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+                <div>
+                    <p>Attendance</p>
+                    <h2>92%</h2>
+                    <span class="success">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        Good Attendance
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card homework-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+
+                <div>
+                    <p>Pending Homework</p>
+                    <h2>3</h2>
+                    <span>Complete before due date</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card result-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+                    <p>Overall Result</p>
+                    <h2>85%</h2>
+                    <span class="success">Excellent Performance</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card fee-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+
+                <div>
+                    <p>Fee Status</p>
+                    <h2>Paid</h2>
+                    <span class="success">
+                        No payment pending
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MIDDLE GRID ================= -->
+
+        <section class="dashboard-grid">
+
+            <!-- TODAY CLASSES -->
+
+            <div class="dashboard-box">
+
+                <div class="box-header">
+                    <h3>
+                        <i class="fa-solid fa-clock"></i>
+                        Today's Classes
+                    </h3>
+
+                    <a href="#">View Timetable</a>
+                </div>
+
+
+                <div class="class-item">
+
+                    <div class="class-time">
+                        <strong>09:00</strong>
+                        <span>AM</span>
+                    </div>
+
+                    <div class="class-details">
+                        <h4>Mathematics</h4>
+                        <p>Mr. Rajesh Sharma</p>
+                    </div>
+
+                    <div class="room">
+                        Room 201
+                    </div>
+
+                </div>
+
+
+                <div class="class-item">
+
+                    <div class="class-time">
+                        <strong>10:00</strong>
+                        <span>AM</span>
+                    </div>
+
+                    <div class="class-details">
+                        <h4>English</h4>
+                        <p>Ms. Priya Singh</p>
+                    </div>
+
+                    <div class="room">
+                        Room 105
+                    </div>
+
+                </div>
+
+
+                <div class="class-item">
+
+                    <div class="class-time">
+                        <strong>11:00</strong>
+                        <span>AM</span>
+                    </div>
+
+                    <div class="class-details">
+                        <h4>Science</h4>
+                        <p>Mr. Amit Verma</p>
+                    </div>
+
+                    <div class="room">
+                        Science Lab
+                    </div>
+
+                </div>
+
+
+                <div class="class-item">
+
+                    <div class="class-time">
+                        <strong>12:30</strong>
+                        <span>PM</span>
+                    </div>
+
+                    <div class="class-details">
+                        <h4>Computer Science</h4>
+                        <p>Ms. Neha Gupta</p>
+                    </div>
+
+                    <div class="room">
+                        Computer Lab
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- UPCOMING EXAMS -->
+
+            <div class="dashboard-box">
+
+                <div class="box-header">
+                    <h3>
+                        <i class="fa-solid fa-calendar-check"></i>
+                        Upcoming Exams
+                    </h3>
+
+                    <a href="#">View All</a>
+                </div>
+
+
+                <div class="exam-item">
+
+                    <div class="exam-date">
+                        <strong>25</strong>
+                        <span>AUG</span>
+                    </div>
+
+                    <div>
+                        <h4>Mathematics</h4>
+                        <p>10:00 AM - 01:00 PM</p>
+                    </div>
+
+                </div>
+
+
+                <div class="exam-item">
+
+                    <div class="exam-date">
+                        <strong>28</strong>
+                        <span>AUG</span>
+                    </div>
+
+                    <div>
+                        <h4>Science</h4>
+                        <p>10:00 AM - 01:00 PM</p>
+                    </div>
+
+                </div>
+
+
+                <div class="exam-item">
+
+                    <div class="exam-date">
+                        <strong>31</strong>
+                        <span>AUG</span>
+                    </div>
+
+                    <div>
+                        <h4>English</h4>
+                        <p>10:00 AM - 01:00 PM</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LOWER SECTION ================= -->
+
+        <section class="dashboard-grid">
+
+            <!-- HOMEWORK -->
+
+            <div class="dashboard-box">
+
+                <div class="box-header">
+                    <h3>
+                        <i class="fa-solid fa-list-check"></i>
+                        Pending Homework
+                    </h3>
+
+                    <a href="#">View All</a>
+                </div>
+
+
+                <div class="homework-item">
+
+                    <div class="subject-icon maths">
+                        M
+                    </div>
+
+                    <div class="homework-info">
+                        <h4>Mathematics</h4>
+                        <p>Complete Chapter 5 - Exercise</p>
+                    </div>
+
+                    <div class="due-date">
+                        Due: 20 Aug
+                    </div>
+
+                </div>
+
+
+                <div class="homework-item">
+
+                    <div class="subject-icon science">
+                        S
+                    </div>
+
+                    <div class="homework-info">
+                        <h4>Science</h4>
+                        <p>Prepare Science Assignment 2</p>
+                    </div>
+
+                    <div class="due-date">
+                        Due: 21 Aug
+                    </div>
+
+                </div>
+
+
+                <div class="homework-item">
+
+                    <div class="subject-icon english">
+                        E
+                    </div>
+
+                    <div class="homework-info">
+                        <h4>English</h4>
+                        <p>Write an essay on Environment</p>
+                    </div>
+
+                    <div class="due-date">
+                        Due: 23 Aug
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTICES -->
+
+            <div class="dashboard-box">
+
+                <div class="box-header">
+                    <h3>
+                        <i class="fa-solid fa-bullhorn"></i>
+                        Latest Notices
+                    </h3>
+
+                    <a href="#">View All</a>
+                </div>
+
+
+                <div class="notice-item">
+
+                    <div class="notice-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+                        <h4>Parent Teacher Meeting</h4>
+                        <p>
+                            Parent Teacher Meeting will be held
+                            on 23 August 2026.
+                        </p>
+                        <span>Today</span>
+                    </div>
+
+                </div>
+
+
+                <div class="notice-item">
+
+                    <div class="notice-icon">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+
+                    <div>
+                        <h4>Independence Day Photos</h4>
+                        <p>
+                            Independence Day celebration photos
+                            are now available.
+                        </p>
+                        <span>Yesterday</span>
+                    </div>
+
+                </div>
+
+
+                <div class="notice-item">
+
+                    <div class="notice-icon">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <div>
+                        <h4>Sports Competition</h4>
+                        <p>
+                            Registration for the annual sports
+                            competition is now open.
+                        </p>
+                        <span>2 days ago</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="quick-section">
+
+            <h3>Quick Actions</h3>
+
+            <div class="quick-actions">
+
+                <a href="#" class="quick-card">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <span>Apply Leave</span>
+                </a>
+
+                <a href="#" class="quick-card">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Study Material</span>
+                </a>
+
+                <a href="#" class="quick-card">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Pay Fees</span>
+                </a>
+
+                <a href="#" class="quick-card">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span>View Result</span>
+                </a>
+
+                <a href="#" class="quick-card">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Help & Support</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+            <p>
+                © 2026 Delhi Public School | Student Management System
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
