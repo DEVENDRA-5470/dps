@@ -3,11 +3,821 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Wanderly — Explore The World</title>
+
     <link rel="stylesheet" href="index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
-    <h1>add rao</h1>
-    
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Wanderly
+        </div>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeBtn">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <button class="profile-btn">
+                <i class="fa-regular fa-user"></i>
+                Sign In
+            </button>
+        </div>
+
+        <button class="mobile-menu" id="mobileMenu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span></span>
+                    DISCOVER THE WORLD
+                </div>
+
+                <h1>
+                    Your next
+                    <em>great adventure</em>
+                    starts here.
+                </h1>
+
+                <p>
+                    Discover breathtaking places, unforgettable experiences,
+                    and hidden gems around the world.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-btn" onclick="scrollToDestinations()">
+                        Explore Destinations
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                    <button class="play-btn" onclick="showVideoMessage()">
+                        <span>
+                            <i class="fa-solid fa-play"></i>
+                        </span>
+                        Watch story
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Search Card -->
+
+            <div class="search-card">
+
+                <div class="search-item">
+
+                    <div class="search-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <small>WHERE TO?</small>
+                        <input
+                            type="text"
+                            id="destinationSearch"
+                            placeholder="Search destination..."
+                        >
+                    </div>
+
+                </div>
+
+                <div class="search-divider"></div>
+
+                <div class="search-item">
+
+                    <div class="search-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+
+                    <div>
+                        <small>WHEN?</small>
+                        <input type="date">
+                    </div>
+
+                </div>
+
+                <div class="search-divider"></div>
+
+                <div class="search-item">
+
+                    <div class="search-icon">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                    <div>
+                        <small>TRAVELERS</small>
+                        <select>
+                            <option>2 Travelers</option>
+                            <option>1 Traveler</option>
+                            <option>3 Travelers</option>
+                            <option>4 Travelers</option>
+                            <option>5+ Travelers</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="search-btn" onclick="searchDestination()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+        </section>
+
+
+        <!-- ================= DESTINATIONS ================= -->
+
+        <section class="destinations section" id="destinations">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">EXPLORE</span>
+
+                    <h2>
+                        Trending destinations
+                    </h2>
+                </div>
+
+                <button class="view-btn">
+                    View all
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+            <div class="destination-grid" id="destinationGrid">
+
+                <!-- Bali -->
+
+                <article class="destination-card" data-name="bali">
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=85"
+                            alt="Bali"
+                        >
+
+                        <button
+                            class="favorite"
+                            onclick="toggleFavorite(this)"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                        <div class="image-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Bali, Indonesia
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            4.9
+                            <span>(2.4k reviews)</span>
+                        </div>
+
+                        <h3>Island of the Gods</h3>
+
+                        <p>
+                            Tropical beaches, ancient temples and endless adventures.
+                        </p>
+
+                        <div class="card-footer">
+                            <strong>
+                                From $799
+                            </strong>
+
+                            <button onclick="explorePlace('Bali')">
+                                Explore
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Santorini -->
+
+                <article class="destination-card" data-name="santorini">
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=85"
+                            alt="Santorini"
+                        >
+
+                        <button
+                            class="favorite"
+                            onclick="toggleFavorite(this)"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                        <div class="image-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Santorini, Greece
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            4.8
+                            <span>(1.8k reviews)</span>
+                        </div>
+
+                        <h3>Aegean Dream</h3>
+
+                        <p>
+                            Whitewashed villages, blue domes and magical sunsets.
+                        </p>
+
+                        <div class="card-footer">
+                            <strong>
+                                From $1,099
+                            </strong>
+
+                            <button onclick="explorePlace('Santorini')">
+                                Explore
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Swiss Alps -->
+
+                <article class="destination-card" data-name="switzerland">
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=85"
+                            alt="Swiss Alps"
+                        >
+
+                        <button
+                            class="favorite"
+                            onclick="toggleFavorite(this)"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                        <div class="image-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Zermatt, Switzerland
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            4.9
+                            <span>(3.1k reviews)</span>
+                        </div>
+
+                        <h3>Swiss Escape</h3>
+
+                        <p>
+                            Majestic mountains, alpine villages and crystal-clear lakes.
+                        </p>
+
+                        <div class="card-footer">
+                            <strong>
+                                From $1,299
+                            </strong>
+
+                            <button onclick="explorePlace('Switzerland')">
+                                Explore
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Japan -->
+
+                <article class="destination-card" data-name="japan">
+
+                    <div class="card-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=900&q=85"
+                            alt="Japan"
+                        >
+
+                        <button
+                            class="favorite"
+                            onclick="toggleFavorite(this)"
+                        >
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                        <div class="image-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Kyoto, Japan
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            4.9
+                            <span>(2.7k reviews)</span>
+                        </div>
+
+                        <h3>Timeless Japan</h3>
+
+                        <p>
+                            Ancient temples, vibrant cities and unforgettable culture.
+                        </p>
+
+                        <div class="card-footer">
+                            <strong>
+                                From $1,199
+                            </strong>
+
+                            <button onclick="explorePlace('Japan')">
+                                Explore
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <div class="no-results" id="noResults">
+                <i class="fa-solid fa-earth-americas"></i>
+                <h3>No destinations found</h3>
+                <p>Try searching for another destination.</p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= EXPERIENCE ================= -->
+
+        <section class="experience section" id="experiences">
+
+            <div class="experience-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85"
+                    alt="Travel experience"
+                >
+
+                <div class="experience-badge">
+                    <strong>15K+</strong>
+                    <span>Happy travelers</span>
+                </div>
+
+            </div>
+
+
+            <div class="experience-content">
+
+                <span class="section-label">
+                    WHY WANDERLY?
+                </span>
+
+                <h2>
+                    Travel more.
+                    <br>
+                    <em>Experience more.</em>
+                </h2>
+
+                <p>
+                    We believe travel isn't just about visiting places.
+                    It's about collecting stories, meeting people and
+                    creating memories that last forever.
+                </p>
+
+
+                <div class="features">
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+
+                        <div>
+                            <h4>Curated adventures</h4>
+                            <p>Handpicked experiences made for curious travelers.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+
+                        <div>
+                            <h4>Travel with confidence</h4>
+                            <p>Trusted partners and support whenever you need it.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+
+                        <div>
+                            <h4>Best value</h4>
+                            <p>Great experiences without unnecessary costs.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="dark-btn">
+                    Discover our story
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NEWSLETTER ================= -->
+
+        <section class="newsletter" id="about">
+
+            <div class="newsletter-content">
+
+                <span class="section-label">
+                    STAY INSPIRED
+                </span>
+
+                <h2>
+                    Your next adventure
+                    <br>
+                    is one email away.
+                </h2>
+
+                <p>
+                    Get travel inspiration, hidden gems and exclusive deals
+                    delivered to your inbox.
+                </p>
+
+                <form id="newsletterForm">
+
+                    <input
+                        type="email"
+                        placeholder="Your email address"
+                        required
+                    >
+
+                    <button type="submit">
+                        Subscribe
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Wanderly
+        </div>
+
+        <p>
+            © 2026 Wanderly. Made for curious travelers.
+        </p>
+
+        <div class="socials">
+
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* Smooth destination scrolling */
+
+        function scrollToDestinations() {
+            document
+                .getElementById("destinations")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+        }
+
+
+        /* Search */
+
+        const searchInput =
+            document.getElementById("destinationSearch");
+
+        const cards =
+            document.querySelectorAll(".destination-card");
+
+        const noResults =
+            document.getElementById("noResults");
+
+
+        searchInput.addEventListener("input", function () {
+
+            const value =
+                this.value.toLowerCase().trim();
+
+            let found = false;
+
+            cards.forEach(card => {
+
+                const name =
+                    card.dataset.name.toLowerCase();
+
+                if (name.includes(value)) {
+
+                    card.style.display = "block";
+                    found = true;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+            noResults.style.display =
+                found ? "none" : "block";
+
+        });
+
+
+        function searchDestination() {
+
+            const value =
+                searchInput.value.trim();
+
+            if (!value) {
+
+                scrollToDestinations();
+                return;
+
+            }
+
+            scrollToDestinations();
+
+            setTimeout(() => {
+                searchInput.focus();
+            }, 700);
+        }
+
+
+        /* Favorite */
+
+        function toggleFavorite(button) {
+
+            button.classList.toggle("active");
+
+            const icon =
+                button.querySelector("i");
+
+            if (button.classList.contains("active")) {
+
+                icon.classList.remove("fa-regular");
+                icon.classList.add("fa-solid");
+
+            } else {
+
+                icon.classList.remove("fa-solid");
+                icon.classList.add("fa-regular");
+
+            }
+
+        }
+
+
+        /* Explore */
+
+        function explorePlace(place) {
+
+            alert(
+                "🌍 Great choice!\n\n" +
+                "Explore amazing experiences in " +
+                place +
+                " coming soon."
+            );
+
+        }
+
+
+        /* Video */
+
+        function showVideoMessage() {
+
+            alert(
+                "🎬 Travel story coming soon!\n\n" +
+                "Get ready for an unforgettable journey."
+            );
+
+        }
+
+
+        /* Newsletter */
+
+        document
+            .getElementById("newsletterForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                const email =
+                    this.querySelector("input").value;
+
+                alert(
+                    "✈️ Welcome to Wanderly!\n\n" +
+                    email +
+                    " has been subscribed."
+                );
+
+                this.reset();
+
+            });
+
+
+        /* Dark / Light */
+
+        const themeBtn =
+            document.getElementById("themeBtn");
+
+        themeBtn.addEventListener("click", () => {
+
+            document.body.classList.toggle("light-mode");
+
+            const icon =
+                themeBtn.querySelector("i");
+
+            if (
+                document.body.classList.contains("light-mode")
+            ) {
+
+                icon.classList.remove("fa-moon");
+                icon.classList.add("fa-sun");
+
+            } else {
+
+                icon.classList.remove("fa-sun");
+                icon.classList.add("fa-moon");
+
+            }
+
+        });
+
+
+        /* Mobile Menu */
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const navLinks =
+            document.querySelector(".nav-links");
+
+        mobileMenu.addEventListener("click", () => {
+
+            navLinks.classList.toggle("show");
+
+        });
+
+
+        /* Scroll reveal */
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+
+        document
+            .querySelectorAll(
+                ".destination-card, .experience-content, .experience-image"
+            )
+            .forEach(el => {
+
+                observer.observe(el);
+
+            });
+
+    </script>
+
 </body>
 </html>
