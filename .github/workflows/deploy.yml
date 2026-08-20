@@ -1,4 +1,4 @@
-name: Deploy Student Dashboard to EC2
+name: Deploy Student Dashboard to Azure VM
 
 on:
   push:
@@ -11,14 +11,14 @@ jobs:
 
     steps:
 
-      # 1. Get repository code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Verify required files
       - name: Validate project
         run: |
-          echo "Checking project files..."
+          set -e
+
+          echo "Checking required files..."
 
           test -f dashboard.html
           test -d students
@@ -27,68 +27,59 @@ jobs:
           echo "students directory found"
           echo "Validation successful"
 
-      # 3. Create deployment package
       - name: Create deployment package
         run: |
+          set -e
+
           tar \
             --exclude='.git' \
             --exclude='.github' \
-            -czf deployment.tar.gz .
+            -czf /tmp/deployment.tar.gz .
 
           echo "Deployment package created"
-          ls -lh deployment.tar.gz
+          ls -lh /tmp/deployment.tar.gz
 
-      # 4. Copy package to EC2
-      - name: Upload package to EC2
+      - name: Upload package to Azure VM
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
+          username: azureuser
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "deployment.tar.gz"
+          source: "/tmp/deployment.tar.gz"
           target: "/tmp"
 
-      # 5. Deploy on EC2
-      - name: Deploy to EC2
+      - name: Deploy application
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
+          username: azureuser
           key: ${{ secrets.EC2_SSH_KEY }}
-
           script: |
             set -e
 
             echo "Starting deployment..."
 
-            # Create web directory
             sudo mkdir -p /var/www/student-dashboard
 
-            # Clean previous deployment
             sudo rm -rf /var/www/student-dashboard/*
 
-            # Extract new deployment
-            sudo tar -xzf /tmp/deployment.tar.gz \
+            sudo tar \
+              -xzf /tmp/deployment.tar.gz \
               -C /var/www/student-dashboard
 
-            # Set ownership
             sudo chown -R www-data:www-data \
               /var/www/student-dashboard
 
-            # Set permissions
             sudo find /var/www/student-dashboard \
               -type d -exec chmod 755 {} \;
 
             sudo find /var/www/student-dashboard \
               -type f -exec chmod 644 {} \;
 
-            # Remove temporary package
             rm -f /tmp/deployment.tar.gz
 
-            # Test nginx configuration
             sudo nginx -t
 
-            # Reload nginx
             sudo systemctl reload nginx
 
             echo "Deployment successful!"
