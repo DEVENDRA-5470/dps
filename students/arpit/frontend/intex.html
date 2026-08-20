@@ -1,12 +1,1060 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="intex.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himalayan Trails | Himachal & Uttarakhand Tours</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1b5e20;
+      --primary-dark: #0d3d12;
+      --accent: #f4a261;
+      --cream: #fffaf3;
+      --dark: #18231a;
+      --text: #5c685e;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(12, 30, 15, 0.35);
+      backdrop-filter: blur(12px);
+      transition: 0.3s;
+    }
+
+    .logo {
+      color: white;
+      font-size: 28px;
+      font-weight: 800;
+      font-family: "Playfair Display", serif;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      color: white;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-btn {
+      padding: 12px 22px;
+      background: var(--accent);
+      color: var(--dark);
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(5, 25, 10, 0.35), rgba(5, 25, 10, 0.75)),
+        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=85");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 100px 8% 50px;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 10px 18px;
+      border-radius: 30px;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 8vw, 105px);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.7;
+      max-width: 650px;
+      color: #f0f0f0;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.7);
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    /* SEARCH BOX */
+
+    .search-box {
+      width: min(1100px, 85%);
+      margin: -65px auto 0;
+      background: white;
+      padding: 22px;
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 15px;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .search-item {
+      border: 1px solid #e4e4e4;
+      border-radius: 10px;
+      padding: 12px 15px;
+    }
+
+    .search-item label {
+      display: block;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 5px;
+    }
+
+    .search-item input,
+    .search-item select {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 15px;
+      background: transparent;
+    }
+
+    .search-btn {
+      border: none;
+      padding: 0 30px;
+      background: var(--primary);
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* COMMON */
+
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-tag {
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(35px, 5vw, 60px);
+      max-width: 750px;
+      line-height: 1.1;
+    }
+
+    .section-title span {
+      color: var(--primary);
+    }
+
+    .section-description {
+      color: var(--text);
+      line-height: 1.8;
+      margin-top: 20px;
+      max-width: 650px;
+    }
+
+    /* DESTINATIONS */
+
+    .destination-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .destination-card {
+      min-height: 430px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+      transition: 0.4s;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .destination-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 30%, rgba(0,0,0,0.85));
+    }
+
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      padding: 28px;
+      color: white;
+      width: 100%;
+    }
+
+    .location {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .card-content h3 {
+      font-size: 35px;
+      margin: 8px 0;
+    }
+
+    .card-content p {
+      color: #eee;
+      font-size: 14px;
+    }
+
+    /* STATES */
+
+    .state-section {
+      background: #16331b;
+      color: white;
+    }
+
+    .state-section .section-tag {
+      color: var(--accent);
+    }
+
+    .state-section .section-title span {
+      color: var(--accent);
+    }
+
+    .state-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .state-card {
+      padding: 45px;
+      border-radius: 20px;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .state-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    }
+
+    .state-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .state-card h2 {
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    .state-card p {
+      line-height: 1.7;
+      color: #e5e5e5;
+      margin-bottom: 20px;
+    }
+
+    /* PACKAGES */
+
+    .packages {
+      background: #f7f3ec;
+    }
+
+    .package-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .package-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .package-image {
+      height: 230px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .package-content {
+      padding: 25px;
+    }
+
+    .package-content h3 {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .package-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 26px;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .price small {
+      color: #888;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .package-btn {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      padding: 12px;
+      border: 1px solid var(--primary);
+      border-radius: 30px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .package-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* EXPERIENCE */
+
+    .experience {
+      background:
+        linear-gradient(rgba(8,35,15,0.8), rgba(8,35,15,0.9)),
+        url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=85");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+    }
+
+    .experience .section-tag {
+      color: var(--accent);
+    }
+
+    .experience .section-title {
+      margin: auto;
+    }
+
+    .experience p {
+      max-width: 700px;
+      margin: 25px auto;
+      color: #e4e4e4;
+      line-height: 1.8;
+    }
+
+    .stats {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat h3 {
+      font-family: "DM Sans";
+      color: var(--accent);
+      font-size: 48px;
+    }
+
+    .stat p {
+      margin: 8px 0;
+      color: white;
+    }
+
+    /* BOOKING */
+
+    .booking {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .booking-image {
+      min-height: 500px;
+      border-radius: 25px;
+      background:
+        url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=85");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .booking-form {
+      margin-top: 30px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .booking-form input,
+    .booking-form select,
+    .booking-form textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      outline: none;
+      font-family: inherit;
+      font-size: 15px;
+    }
+
+    .booking-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .booking-form button {
+      border: none;
+      background: var(--primary);
+      color: white;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0d2110;
+      color: white;
+      padding: 70px 8% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-grid h3 {
+      margin-bottom: 18px;
+      font-family: "DM Sans";
+    }
+
+    .footer-grid p,
+    .footer-grid a {
+      display: block;
+      color: #b9c3ba;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      border-top: 1px solid #2a3c2c;
+      margin-top: 40px;
+      padding-top: 20px;
+      color: #a6b0a7;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+      .nav-links {
+        display: none;
+      }
+
+      .search-box {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-btn {
+        padding: 15px;
+      }
+
+      .destination-grid,
+      .package-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .booking,
+      .state-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 15px 5%;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      section {
+        padding: 70px 5%;
+      }
+
+      .hero {
+        padding: 100px 5%;
+      }
+
+      .search-box {
+        width: 90%;
+        grid-template-columns: 1fr;
+        margin-top: -40px;
+      }
+
+      .destination-grid,
+      .package-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .state-card h2 {
+        font-size: 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Arpit</h1>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="logo">Himalayan<span>Trails</span></a>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#states">Explore</a>
+      <a href="#packages">Packages</a>
+      <a href="#booking">Contact</a>
+    </div>
+
+    <a href="#booking" class="nav-btn">Plan Your Trip</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-tag">🏔️ Discover the Magic of the Himalayas</div>
+
+      <h1>Where Mountains Meet <span>Your Soul.</span></h1>
+
+      <p>
+        Escape the ordinary and explore the breathtaking beauty of
+        Himachal Pradesh and Uttarakhand. From snow-covered peaks to
+        peaceful rivers and ancient temples — your Himalayan adventure starts here.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#destinations" class="btn btn-primary">Explore Destinations</a>
+        <a href="#packages" class="btn btn-outline">View Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+    <div class="search-item">
+      <label>Destination</label>
+      <select>
+        <option>Select Place</option>
+        <option>Manali</option>
+        <option>Shimla</option>
+        <option>Kasol</option>
+        <option>Rishikesh</option>
+        <option>Mussoorie</option>
+        <option>Nainital</option>
+      </select>
+    </div>
+
+    <div class="search-item">
+      <label>Travel Date</label>
+      <input type="date">
+    </div>
+
+    <div class="search-item">
+      <label>Guests</label>
+      <select>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4 Guests</option>
+        <option>5+ Guests</option>
+      </select>
+    </div>
+
+    <div class="search-item">
+      <label>Trip Type</label>
+      <select>
+        <option>Adventure</option>
+        <option>Honeymoon</option>
+        <option>Family</option>
+        <option>Solo</option>
+      </select>
+    </div>
+
+    <button class="search-btn">Search</button>
+  </div>
+
+  <!-- DESTINATIONS -->
+  <section id="destinations">
+    <div class="section-tag">Popular Destinations</div>
+    <h2 class="section-title">
+      Explore The Most Beautiful <span>Places of Himalayas</span>
+    </h2>
+
+    <p class="section-description">
+      Discover snow-covered mountains, crystal-clear rivers, peaceful valleys,
+      beautiful lakes and unforgettable adventures.
+    </p>
+
+    <div class="destination-grid">
+
+      <div class="destination-card"
+        style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=85')">
+        <div class="card-content">
+          <div class="location">📍 Himachal Pradesh</div>
+          <h3>Manali</h3>
+          <p>Snow mountains, Solang Valley and unforgettable adventures.</p>
+        </div>
+      </div>
+
+      <div class="destination-card"
+        style="background-image:url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=85')">
+        <div class="card-content">
+          <div class="location">📍 Himachal Pradesh</div>
+          <h3>Kasol</h3>
+          <p>A peaceful paradise surrounded by mountains and Parvati River.</p>
+        </div>
+      </div>
+
+      <div class="destination-card"
+        style="background-image:url('https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=900&q=85')">
+        <div class="card-content">
+          <div class="location">📍 Uttarakhand</div>
+          <h3>Rishikesh</h3>
+          <p>The yoga capital of the world and the land of adventure.</p>
+        </div>
+      </div>
+
+      <div class="destination-card"
+        style="background-image:url('https://images.unsplash.com/photo-1626621331169-5f34be280ed9?auto=format&fit=crop&w=900&q=85')">
+        <div class="card-content">
+          <div class="location">📍 Uttarakhand</div>
+          <h3>Mussoorie</h3>
+          <p>The queen of hills with beautiful valleys and scenic views.</p>
+        </div>
+      </div>
+
+      <div class="destination-card"
+        style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=85')">
+        <div class="card-content">
+          <div class="location">📍 Himachal Pradesh</div>
+          <h3>Shimla</h3>
+          <p>Colonial beauty, Mall Road and breathtaking Himalayan views.</p>
+        </div>
+      </div>
+
+      <div class="destination-card"
+        style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85')">
+        <div class="card-content">
+          <div class="location">📍 Uttarakhand</div>
+          <h3>Nainital</h3>
+          <p>A magical lake city surrounded by beautiful green mountains.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATES -->
+  <section class="state-section" id="states">
+
+    <div class="section-tag">Choose Your Journey</div>
+
+    <h2 class="section-title">
+      Two States. One <span>Unforgettable Experience.</span>
+    </h2>
+
+    <div class="state-grid">
+
+      <div class="state-card"
+        style="background-image:url('https://images.unsplash.com/photo-1518002054494-3a6f94352e9a?auto=format&fit=crop&w=1000&q=85')">
+
+        <div class="state-card-content">
+          <h2>Himachal Pradesh</h2>
+          <p>
+            Explore Manali, Shimla, Kasol, Dharamshala, Spiti Valley
+            and the majestic beauty of the Himalayas.
+          </p>
+          <a href="#packages" class="btn btn-primary">Explore Himachal</a>
+        </div>
+      </div>
+
+      <div class="state-card"
+        style="background-image:url('https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1000&q=85')">
+
+        <div class="state-card-content">
+          <h2>Uttarakhand</h2>
+          <p>
+            Experience Rishikesh, Mussoorie, Nainital, Auli, Kedarnath
+            and the peaceful beauty of Devbhoomi.
+          </p>
+          <a href="#packages" class="btn btn-primary">Explore Uttarakhand</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages" id="packages">
+
+    <div class="section-tag">Best Selling Tours</div>
+
+    <h2 class="section-title">
+      Handpicked <span>Travel Packages</span>
+    </h2>
+
+    <div class="package-grid">
+
+      <div class="package-card">
+        <div class="package-image"
+          style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="package-content">
+          <h3>Manali Adventure</h3>
+
+          <div class="package-meta">
+            <span>📅 5 Days / 4 Nights</span>
+            <span>👥 2 People</span>
+          </div>
+
+          <p class="price">₹14,999 <small>/ person</small></p>
+
+          <a href="#booking" class="package-btn">Book This Trip</a>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <div class="package-image"
+          style="background-image:url('https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="package-content">
+          <h3>Rishikesh Escape</h3>
+
+          <div class="package-meta">
+            <span>📅 4 Days / 3 Nights</span>
+            <span>👥 2 People</span>
+          </div>
+
+          <p class="price">₹11,999 <small>/ person</small></p>
+
+          <a href="#booking" class="package-btn">Book This Trip</a>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <div class="package-image"
+          style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85')">
+        </div>
+
+        <div class="package-content">
+          <h3>Nainital & Mussoorie</h3>
+
+          <div class="package-meta">
+            <span>📅 6 Days / 5 Nights</span>
+            <span>👥 2 People</span>
+          </div>
+
+          <p class="price">₹18,999 <small>/ person</small></p>
+
+          <a href="#booking" class="package-btn">Book This Trip</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience">
+
+    <div class="section-tag">Why Travel With Us</div>
+
+    <h2 class="section-title">
+      Your Journey Deserves <span>Something Special</span>
+    </h2>
+
+    <p>
+      We create memorable Himalayan journeys with comfortable stays,
+      local experiences, exciting adventures and beautiful destinations.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <h3>10K+</h3>
+        <p>Happy Travelers</p>
+      </div>
+
+      <div class="stat">
+        <h3>50+</h3>
+        <p>Destinations</p>
+      </div>
+
+      <div class="stat">
+        <h3>4.9</h3>
+        <p>Average Rating</p>
+      </div>
+
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Travel Support</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+
+    <div class="booking">
+
+      <div class="booking-image"></div>
+
+      <div>
+        <div class="section-tag">Start Your Journey</div>
+
+        <h2 class="section-title">
+          Plan Your <span>Dream Himalayan Trip</span>
+        </h2>
+
+        <p class="section-description">
+          Tell us where you want to go and our travel experts will help
+          you create the perfect Himachal or Uttarakhand experience.
+        </p>
+
+        <form class="booking-form" onsubmit="bookTrip(event)">
+          <input type="text" placeholder="Your Name" required>
+
+          <input type="email" placeholder="Email Address" required>
+
+          <select required>
+            <option value="">Choose Destination</option>
+            <option>Himachal Pradesh</option>
+            <option>Uttarakhand</option>
+            <option>Manali</option>
+            <option>Kasol</option>
+            <option>Shimla</option>
+            <option>Rishikesh</option>
+            <option>Mussoorie</option>
+            <option>Nainital</option>
+          </select>
+
+          <textarea placeholder="Tell us about your dream trip..."></textarea>
+
+          <button type="submit">Send Travel Request</button>
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="logo">Himalayan<span>Trails</span></div>
+
+        <p style="margin-top:20px;">
+          Explore the most beautiful destinations of Himachal Pradesh
+          and Uttarakhand with unforgettable travel experiences.
+        </p>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <a href="#">Manali</a>
+        <a href="#">Kasol</a>
+        <a href="#">Shimla</a>
+        <a href="#">Rishikesh</a>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <a href="#">About Us</a>
+        <a href="#">Tour Packages</a>
+        <a href="#">Travel Blog</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <p>📍 India</p>
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ hello@himalayantrails.com</p>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Himalayan Trails. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <script>
+    function bookTrip(event) {
+      event.preventDefault();
+      alert("Thank you! Your travel request has been received. Our team will contact you soon.");
+    }
+
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".navbar");
+
+      if (window.scrollY > 50) {
+        navbar.style.background = "rgba(13, 33, 16, 0.95)";
+        navbar.style.padding = "14px 8%";
+      } else {
+        navbar.style.background = "rgba(12, 30, 15, 0.35)";
+        navbar.style.padding = "20px 8%";
+      }
+    });
+  </script>
+
 </body>
 </html>
