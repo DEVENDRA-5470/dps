@@ -1,4 +1,4 @@
-name: Deploy Student Dashboard to Azure VM
+name: Deploy Dashboard to Azure VM
 
 on:
   push:
@@ -18,14 +18,11 @@ jobs:
         run: |
           set -e
 
-          echo "Checking required files..."
-
           test -f dashboard.html
           test -d students
 
           echo "dashboard.html found"
           echo "students directory found"
-          echo "Validation successful"
 
       - name: Create deployment package
         run: |
@@ -34,18 +31,18 @@ jobs:
           tar \
             --exclude='.git' \
             --exclude='.github' \
-            -czf /tmp/deployment.tar.gz .
+            -czf deployment.tar.gz .
 
-          echo "Deployment package created"
-          ls -lh /tmp/deployment.tar.gz
+          echo "Package created:"
+          ls -lh deployment.tar.gz
 
-      - name: Upload package to Azure VM
+      - name: Upload deployment package
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: azureuser
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "/tmp/deployment.tar.gz"
+          source: "deployment.tar.gz"
           target: "/tmp"
 
       - name: Deploy application
@@ -56,6 +53,9 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             set -e
+
+            echo "Checking uploaded package..."
+            ls -lh /tmp/deployment.tar.gz
 
             echo "Starting deployment..."
 
@@ -79,7 +79,6 @@ jobs:
             rm -f /tmp/deployment.tar.gz
 
             sudo nginx -t
-
             sudo systemctl reload nginx
 
             echo "Deployment successful!"
