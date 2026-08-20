@@ -1,0 +1,79 @@
+name: Deploy Dashboard to Azure VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate project
+        run: |
+          set -e
+
+          test -f dashboard.html
+          test -d students
+
+          echo "dashboard.html found"
+          echo "students directory found"
+          echo "Project validation successful"
+
+      - name: Prepare SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy files to Azure VM
+        run: |
+          rsync -avz \
+            --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            ./ \
+            azureuser@${{ secrets.EC2_HOST }}:/tmp/taskforge-deploy/
+
+      - name: Install deployment on VM
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            azureuser@${{ secrets.EC2_HOST }} << 'EOF'
+
+          set -e
+
+          echo "Starting deployment..."
+
+          sudo mkdir -p /var/www/student-dashboard
+
+          sudo rm -rf /var/www/student-dashboard/*
+
+          sudo cp -r /tmp/taskforge-deploy/. \
+            /var/www/student-dashboard/
+
+          sudo chown -R www-data:www-data \
+            /var/www/student-dashboard
+
+          sudo find /var/www/student-dashboard \
+            -type d -exec chmod 755 {} \;
+
+          sudo find /var/www/student-dashboard \
+            -type f -exec chmod 644 {} \;
+
+          sudo nginx -t
+
+          sudo systemctl reload nginx
+
+          rm -rf /tmp/taskforge-deploy
+
+          echo "Deployment successful!"
+
+          EOF
