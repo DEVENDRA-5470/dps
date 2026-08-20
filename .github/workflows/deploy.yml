@@ -23,62 +23,57 @@ jobs:
 
           echo "dashboard.html found"
           echo "students directory found"
+          echo "Project validation successful"
 
-      - name: Create deployment package
+      - name: Prepare SSH
         run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy files to Azure VM
+        run: |
+          rsync -avz \
+            --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            ./ \
+            azureuser@${{ secrets.EC2_HOST }}:/tmp/taskforge-deploy/
+
+      - name: Install deployment on VM
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            azureuser@${{ secrets.EC2_HOST }} << 'EOF'
+
           set -e
 
-          tar \
-            --exclude='.git' \
-            --exclude='.github' \
-            -czf deployment.tar.gz .
+          echo "Starting deployment..."
 
-          echo "Package created:"
-          ls -lh deployment.tar.gz
+          sudo mkdir -p /var/www/student-dashboard
 
-      - name: Upload deployment package
-        uses: appleboy/scp-action@v1
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: azureuser
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "deployment.tar.gz"
-          target: "/tmp"
+          sudo rm -rf /var/www/student-dashboard/*
 
-      - name: Deploy application
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: azureuser
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            set -e
+          sudo cp -r /tmp/taskforge-deploy/. \
+            /var/www/student-dashboard/
 
-            echo "Checking uploaded package..."
-            ls -lh /tmp/deployment.tar.gz
+          sudo chown -R www-data:www-data \
+            /var/www/student-dashboard
 
-            echo "Starting deployment..."
+          sudo find /var/www/student-dashboard \
+            -type d -exec chmod 755 {} \;
 
-            sudo mkdir -p /var/www/student-dashboard
+          sudo find /var/www/student-dashboard \
+            -type f -exec chmod 644 {} \;
 
-            sudo rm -rf /var/www/student-dashboard/*
+          sudo nginx -t
 
-            sudo tar \
-              -xzf /tmp/deployment.tar.gz \
-              -C /var/www/student-dashboard
+          sudo systemctl reload nginx
 
-            sudo chown -R www-data:www-data \
-              /var/www/student-dashboard
+          rm -rf /tmp/taskforge-deploy
 
-            sudo find /var/www/student-dashboard \
-              -type d -exec chmod 755 {} \;
+          echo "Deployment successful!"
 
-            sudo find /var/www/student-dashboard \
-              -type f -exec chmod 644 {} \;
-
-            rm -f /tmp/deployment.tar.gz
-
-            sudo nginx -t
-            sudo systemctl reload nginx
-
-            echo "Deployment successful!"
+          EOF
