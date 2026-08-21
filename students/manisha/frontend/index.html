@@ -1,1 +1,590 @@
-manisha..........................
+<!DOCTYPE html>
+<!-- manisha -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Never Give Up</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050505;
+      color: white;
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.92) 0%,
+          rgba(0,0,0,0.72) 38%,
+          rgba(0,0,0,0.25) 68%,
+          rgba(0,0,0,0.45) 100%
+        ),
+        url("background.jpg");
+
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      width: 100%;
+      padding: 28px 4%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo h2 {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #e31b23;
+    }
+
+    .logo p {
+      margin-top: 8px;
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: #ddd;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 45px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav ul li a:hover {
+      color: #e31b23;
+    }
+
+    nav ul li a.active {
+      color: #e31b23;
+    }
+
+    nav ul li a.active::after {
+      content: "";
+      position: absolute;
+      width: 45px;
+      height: 2px;
+      background: #e31b23;
+      left: 0;
+      bottom: -15px;
+    }
+
+    /* MAIN HERO CONTENT */
+
+    .hero-content {
+      flex: 1;
+      padding: 50px 4%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .left-content {
+      max-width: 650px;
+    }
+
+    .main-title {
+      font-size: clamp(75px, 9vw, 145px);
+      font-weight: 900;
+      line-height: 0.82;
+      letter-spacing: -4px;
+      text-transform: uppercase;
+    }
+
+    .main-title .white {
+      color: white;
+    }
+
+    .main-title .red {
+      color: #e31b23;
+    }
+
+    .red-line {
+      width: 70px;
+      height: 4px;
+      margin: 30px 0;
+      background: #e31b23;
+    }
+
+    .description {
+      font-size: 20px;
+      max-width: 560px;
+      line-height: 1.6;
+      color: #e4e4e4;
+    }
+
+    .description strong {
+      color: white;
+    }
+
+    /* BUTTONS */
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 17px 28px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #e31b23;
+      border: 2px solid #e31b23;
+    }
+
+    .btn-primary:hover {
+      background: #b50e14;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border: 2px solid white;
+      background: rgba(0,0,0,0.35);
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: black;
+      transform: translateY(-3px);
+    }
+
+    /* QUOTE BOX */
+
+    .quote-box {
+      width: 260px;
+      padding: 30px;
+      border: 1px solid #e31b23;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(3px);
+    }
+
+    .quote-symbol {
+      font-size: 45px;
+      line-height: 0.7;
+    }
+
+    .quote-box h3 {
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .quote-box span {
+      color: #e31b23;
+    }
+
+    /* BOTTOM CARDS */
+
+    .cards {
+      margin: 0 4% 30px;
+      background: rgba(0,0,0,0.75);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      backdrop-filter: blur(10px);
+    }
+
+    .card {
+      padding: 28px 45px;
+      text-align: center;
+      position: relative;
+    }
+
+    .card:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 18%;
+      width: 1px;
+      height: 64%;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 12px;
+      color: #e31b23;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .small-line {
+      width: 40px;
+      height: 3px;
+      background: #e31b23;
+      margin: 12px auto;
+    }
+
+    .card p {
+      color: #ddd;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* SCROLL */
+
+    .scroll-down {
+      text-align: center;
+      padding-bottom: 15px;
+      letter-spacing: 7px;
+      font-size: 12px;
+      color: #ddd;
+    }
+
+    .arrow {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
+
+    /* EXTRA SECTIONS */
+
+    .section {
+      padding: 90px 8%;
+      background: #080808;
+      min-height: 50vh;
+    }
+
+    .section:nth-child(even) {
+      background: #111;
+    }
+
+    .section h2 {
+      font-size: 45px;
+      margin-bottom: 25px;
+    }
+
+    .section h2 span {
+      color: #e31b23;
+    }
+
+    .section p {
+      max-width: 850px;
+      line-height: 1.8;
+      color: #ccc;
+      font-size: 18px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 950px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .quote-box {
+        margin-top: 50px;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card:not(:last-child)::after {
+        width: 70%;
+        height: 1px;
+        top: auto;
+        bottom: 0;
+        right: 15%;
+      }
+
+      .main-title {
+        font-size: 75px;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .main-title {
+        font-size: 58px;
+      }
+
+      .description {
+        font-size: 16px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
+      }
+
+      .section h2 {
+        font-size: 34px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <nav>
+
+      <div class="logo">
+        <h2>NEVER <span>GIVE UP</span></h2>
+        <p>BELIEVE • FOCUS • ACHIEVE</p>
+      </div>
+
+      <ul>
+        <li><a class="active" href="#home">HOME</a></li>
+        <li><a href="#motivation">MOTIVATION</a></li>
+        <li><a href="#mindset">MINDSET</a></li>
+        <li><a href="#journey">JOURNEY</a></li>
+        <li><a href="#about">ABOUT</a></li>
+      </ul>
+
+    </nav>
+
+
+    <div class="hero-content">
+
+      <div class="left-content">
+
+        <h1 class="main-title">
+          <span class="white">NEVER</span><br>
+          <span class="red">GIVE UP</span>
+        </h1>
+
+        <div class="red-line"></div>
+
+        <p class="description">
+          Failure is not the end. Every struggle you face is building
+          the strength you need for tomorrow.
+          <br>
+          <strong>Keep going.</strong> Your future is waiting.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#journey" class="btn btn-primary">
+            ⚡ START YOUR JOURNEY
+          </a>
+
+          <a href="#mindset" class="btn btn-secondary">
+            🎯 BUILD YOUR MINDSET
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="quote-box">
+
+        <div class="quote-symbol">“</div>
+
+        <h3>
+          THE PAIN YOU<br>
+          FEEL TODAY<br>
+          WILL BE THE<br>
+
+          <span>
+            STRENGTH YOU<br>
+            FEEL TOMORROW.
+          </span>
+        </h3>
+
+      </div>
+
+    </div>
+
+
+    <!-- CARDS -->
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="icon">⛰</div>
+
+        <h3>KEEP FIGHTING</h3>
+
+        <div class="small-line"></div>
+
+        <p>
+          Difficult roads often lead to beautiful destinations.
+          Keep moving forward.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🎯</div>
+
+        <h3>STAY STRONG</h3>
+
+        <div class="small-line"></div>
+
+        <p>
+          Your biggest competition is the person you were yesterday.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🏆</div>
+
+        <h3>NEVER STOP</h3>
+
+        <div class="small-line"></div>
+
+        <p>
+          You don't have to be perfect.
+          You only have to keep going.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="scroll-down">
+
+      <span class="arrow">⌄</span>
+
+      SCROLL DOWN
+
+    </div>
+
+  </section>
+
+
+  <!-- MOTIVATION -->
+
+  <section class="section" id="motivation">
+
+    <h2>
+      KEEP <span>FIGHTING</span>
+    </h2>
+
+    <p>
+      Every failure teaches you something. Every challenge makes you
+      stronger. Success does not come from never falling — it comes
+      from getting back up every single time.
+    </p>
+
+  </section>
+
+
+  <!-- MINDSET -->
+
+  <section class="section" id="mindset">
+
+    <h2>
+      BUILD YOUR <span>MINDSET</span>
+    </h2>
+
+    <p>
+      Your mindset decides how far you can go.
+      Believe in yourself, stay disciplined, focus on your goal,
+      and never allow temporary failure to stop you.
+    </p>
+
+  </section>
+
+
+  <!-- JOURNEY -->
+
+  <section class="section" id="journey">
+
+    <h2>
+      START YOUR <span>JOURNEY</span>
+    </h2>
+
+    <p>
+      You do not need to have everything figured out.
+      Start where you are, use what you have, and improve yourself
+      every day. Small progress eventually creates big results.
+    </p>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="section" id="about">
+
+    <h2>
+      NEVER <span>GIVE UP</span>
+    </h2>
+
+    <p>
+      This page represents determination, discipline and the courage
+      to keep moving forward even when the road becomes difficult.
+      Believe. Focus. Achieve.
+    </p>
+
+  </section>
+
+</body>
+</html>
