@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Page Design */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    transition: 0.5s;
+}
+
+/* Main Heading */
+h1 {
+    color: blue;
+    font-size: 45px;
+    margin-bottom: 20px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+/* Heading Hover Effect */
+h1:hover {
+    color: red;
+    transform: scale(1.1);
+    text-shadow: 3px 3px 10px gray;
+}
+
+/* Button */
+button {
+    padding: 14px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Button Hover */
+button:hover {
+    background: blue;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Click */
+button:active {
+    transform: scale(0.95);
+}
+
+/* Message */
+#message {
+    margin-top: 25px;
+    font-size: 22px;
+    color: #333;
+    transition: 0.4s;
+}
+
+/* Card */
+.card {
+    width: 300px;
+    margin: 40px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    transition: 0.4s;
+}
+
+/* Card Hover */
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
